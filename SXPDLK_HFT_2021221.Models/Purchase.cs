@@ -21,9 +21,8 @@ namespace SXPDLK_HFT_2021221.Models
         
         [NotMapped]
         public virtual Guitar Guitar { get; set; }
-        [NotMapped]
-        public virtual Brand Brand { get; set; }
         public int GuitarId { get; set; }
+        
 
     }
 }

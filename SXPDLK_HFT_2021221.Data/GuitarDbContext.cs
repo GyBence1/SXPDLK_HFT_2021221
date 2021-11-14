@@ -50,7 +50,12 @@ namespace SXPDLK_HFT_2021221.Data
                     .HasForeignKey(guitar => guitar.BrandId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
-
+            //modelBuilder.Entity<Purchase>(entity =>
+            //{
+                
+                
+                
+            //});
             modelBuilder.Entity<Brand>().HasData(fender, ibanez, gibson);
             modelBuilder.Entity<Guitar>().HasData(fender1,fender2 ,ibanez1, gibson1);
             modelBuilder.Entity<Purchase>().HasData(purchase1, purchase2);
