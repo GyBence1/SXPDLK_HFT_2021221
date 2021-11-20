@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SXPDLK_HFT_2021221.Repository
 {
-    public class PurchaseRepository:IPurchaseRepository
+    public class PurchaseRepository : IPurchaseRepository
     {
         GuitarDbContext db;
         public PurchaseRepository(GuitarDbContext db)

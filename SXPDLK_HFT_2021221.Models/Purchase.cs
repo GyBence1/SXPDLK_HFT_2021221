@@ -18,6 +18,7 @@ namespace SXPDLK_HFT_2021221.Models
         [Required]
         [MaxLength(40)]
         public string BuyerName { get; set; }
+        public string BuyerCity { get; set; }
         
         [NotMapped]
         public virtual Guitar Guitar { get; set; }

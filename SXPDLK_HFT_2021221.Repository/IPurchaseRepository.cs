@@ -14,5 +14,6 @@ namespace SXPDLK_HFT_2021221.Repository
         Purchase Read(int id);
         IQueryable<Purchase> ReadAll();
         void Update(Purchase purchase);
+        
     }
 }
