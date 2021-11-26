@@ -25,9 +25,9 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string,List<string>>> BuyerNamesByBrands()
+        public IEnumerable<KeyValuePair<string,string>> BuyerNamesByBrands()
         {
-            return pl.BuyerNamesByBrands();
+            return pl.BuyerNamesByGuitarModels();
         }
         [HttpGet]
         public IEnumerable<KeyValuePair<string,double>>AVGPriceByCities()

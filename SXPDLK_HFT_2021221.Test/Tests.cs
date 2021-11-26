@@ -28,15 +28,16 @@ namespace SXPDLK_HFT_2021221.Test
             Brand fakeBrand = new Brand()
             {
                 Name = "Epiphone"
+                ,Id=1
             };
-            mockGuitarRepository.Setup(r => r.ReadAll()).Returns(
-                new List<Guitar>()
-                {
-                    new Guitar()
+            List<Guitar> guitars = new List<Guitar>()
+            {
+                new Guitar()
                     {
                         Id=1,
                         Model="LP3",
                         Brand=fakeBrand,
+                        BrandId=fakeBrand.Id,
                         Price=10000,
                         Type=GuitarTypes.Electric
                     },
@@ -45,6 +46,7 @@ namespace SXPDLK_HFT_2021221.Test
                         Id=2,
                         Model="BC9",
                         Brand=fakeBrand,
+                        BrandId=fakeBrand.Id,
                         Price=20000,
                         Type=GuitarTypes.Acoustic
                     },
@@ -53,39 +55,51 @@ namespace SXPDLK_HFT_2021221.Test
                         Id=3,
                         Model="GH1",
                         Brand=fakeBrand,
+                        BrandId=fakeBrand.Id,
                         Price=15000,
                         Type=GuitarTypes.Electric
                     }
-                }.AsQueryable()
+            };
+            mockGuitarRepository.Setup(r => r.ReadAll()).Returns(guitars.AsQueryable()
                 );
             mockGuitarRepository.Setup(r => r.Create(It.IsAny<Guitar>()));
             mockGuitarRepository.Setup(r => r.Delete(It.IsInRange(1,3,Moq.Range.Inclusive)));
             gl = new GuitarLogic(mockGuitarRepository.Object, mockBrandRepository.Object);
             #endregion
             #region MockPurchaseSetup
-            mockPurchaseRepository.Setup(r => r.ReadAll()).Returns(
-                new List<Purchase>()
-                {
+            var purchases = new List<Purchase>()
+            {
+
                     new Purchase()
                     {
                         BuyerName="Buyer1",
                         BuyerCity="Budapest",
-                        Guitar=mockGuitarRepository.Object.ReadAll().ToArray()[0]
+                        Guitar=guitars[0],
+                        GuitarId=guitars[0].Id,
+                        Id=1
+                        ,BrandName=guitars[0].Brand.Name
+
                     },
                     new Purchase()
                     {
                         BuyerName="Buyer2",
                         BuyerCity="Budapest",
-                        Guitar=mockGuitarRepository.Object.ReadAll().ToArray()[1]
+                        Guitar=guitars[1],
+                        GuitarId=guitars[1].Id,
+                        Id=2,
+                        BrandName=guitars[1].Brand.Name
                     },
                     new Purchase()
                     {
                         BuyerName="Buyer3",
                         BuyerCity="Chicago",
-                        Guitar=mockGuitarRepository.Object.ReadAll().ToArray()[2]
+                        Guitar=guitars[2],
+                        GuitarId=guitars[2].Id,
+                        Id=3,
+                        BrandName=guitars[2].Brand.Name
                     }
-                }.AsQueryable()
-                );
+            };
+            mockPurchaseRepository.Setup(r => r.ReadAll()).Returns(purchases.AsQueryable());
             mockPurchaseRepository.Setup(r => r.Create(It.IsAny<Purchase>()));
             pl = new PurchaseLogic(mockGuitarRepository.Object, mockBrandRepository.Object, mockPurchaseRepository.Object);
             #endregion
@@ -117,13 +131,16 @@ namespace SXPDLK_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(expect));
         }
         [Test]
-        public void BuyerNamesByBrandsTest()
+        public void BuyerNamesByModelsTest()
         {
-            var result = pl.BuyerNamesByBrands();
-            var expected = new List<KeyValuePair<string, List<string>>>()
+            var result = pl.BuyerNamesByGuitarModels();
+            var expected = new List<KeyValuePair<string, string>>()
             {
-                new KeyValuePair<string, List<string>>("Epiphone",new List<string>(){"Buyer1","Buyer2","Buyer3" })
+                new KeyValuePair<string, string>("LP3","Buyer1"),
+                new KeyValuePair<string, string>("BC9","Buyer2"),
+                new KeyValuePair<string, string>("GH1","Buyer3")
             };
+            Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
         public void AVGPricebyCitiesTest()
