@@ -16,7 +16,7 @@ namespace SXPDLK_HFT_2021221.Logic
         Guitar Read(int id);
         IEnumerable<Guitar> ReadAll();
         void Update(Guitar guitar);
-        IEnumerable<KeyValuePair<string, List<string>>> GuitarModelsByBrands();
+        IEnumerable<KeyValuePair<string, double>> AVGModelsByBrands();
         IEnumerable<KeyValuePair<string, double>> AVGPriceByTypes();
     }
 }

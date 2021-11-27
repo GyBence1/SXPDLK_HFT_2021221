@@ -154,13 +154,14 @@ namespace SXPDLK_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void ModelsByBrandsTest()
+        public void AVGModelsByBrandsTest()
         {
-            var result = gl.GuitarModelsByBrands();
-            var expected = new List<KeyValuePair<string, List<string>>>()
+            var result = gl.AVGModelsByBrands();
+            var expected = new List<KeyValuePair<string, double>>()
             {
-                new KeyValuePair<string, List<string>>("Epiphone",new List<string>(){"LP3", "BC9", "GH1" })
+                new KeyValuePair<string, double>("Epiphone",3)
             };
+            Assert.That(result, Is.EqualTo(expected));
         }
         [TestCase(3000, false)]
         [TestCase(-1000, true)]
