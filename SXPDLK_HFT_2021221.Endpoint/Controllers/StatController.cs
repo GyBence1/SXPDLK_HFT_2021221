@@ -34,18 +34,22 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         {
             return pl.AVGPriceByCities();
         }
+        [HttpGet]
         public double AVGPrice()
         {
             return gl.AVGPrice();
         }
+        [HttpGet]
         public IEnumerable<KeyValuePair<string,double>>AVGPriceByBrands()
         {
             return gl.AVGPriceByBrands();
         }
+        [HttpGet]
         public IEnumerable<KeyValuePair<string, double>> AVGPriceByTypes()
         {
             return gl.AVGPriceByTypes();
         }
+        [HttpGet]
         public IEnumerable<KeyValuePair<string,double>>AVGModelsByBrands()
         {
             return gl.AVGModelsByBrands();

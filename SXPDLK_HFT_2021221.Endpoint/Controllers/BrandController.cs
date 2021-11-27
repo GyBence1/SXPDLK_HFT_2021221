@@ -19,35 +19,35 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         {
             this.bl = bl;
         }
-        // GET: api/<BrandController>
+        // GET: /brand
         [HttpGet]
         public IEnumerable<Brand> Get()
         {
             return bl.ReadAll();
         }
 
-        // GET api/<BrandController>/5
+        // GET /brand/5
         [HttpGet("{id}")]
         public Brand Get(int id)
         {
             return bl.Read(id);
         }
 
-        // POST api/<BrandController>
+        // POST /brand
         [HttpPost]
         public void Post([FromBody] Brand value)
         {
             bl.Create(value);
         }
 
-        // PUT api/<BrandController>/5
+        // PUT /brand
         [HttpPut("{id}")]
         public void Put([FromBody] Brand value)
         {
             bl.Update(value);
         }
 
-        // DELETE api/<BrandController>/5
+        // DELETE /brand/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

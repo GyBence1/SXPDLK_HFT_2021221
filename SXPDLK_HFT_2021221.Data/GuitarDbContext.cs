@@ -41,10 +41,10 @@ namespace SXPDLK_HFT_2021221.Data
             Guitar ibanez1 = new Guitar() { Id = 4, BrandId = ibanez.Id, Price = 60000, Model = "Ibanez GRG121DX", Type = GuitarTypes.Electric };
             Guitar ibanez2 = new Guitar() { Id = 5, BrandId = ibanez.Id, Price = 45000, Model = "Ibanez VP12" , Type = GuitarTypes.Acoustic};
 
-            Purchase purchase1 = new Purchase() { Id = 1, BuyerName = "Django Reinhardt", GuitarId = fender1.Id ,BuyerCity="Chicago", BrandName = fender1.Brand.Name };
-            Purchase purchase2 = new Purchase() { Id = 2, BuyerName = "Slash", GuitarId = gibson1.Id , BuyerCity = "Chicago", BrandName = gibson1.Brand.Name };
-            Purchase purchase3 = new Purchase() { Id = 3, BuyerName = "Stevie Ray Vaughn", GuitarId = fender2.Id, BuyerCity = "Austin", BrandName = fender2.Brand.Name };
-            Purchase purchase4 = new Purchase() { Id = 4, BuyerName = "TK", GuitarId = ibanez1.Id ,BuyerCity="Budapest",BrandName=ibanez1.Brand.Name};
+            Purchase purchase1 = new Purchase() { Id = 1, BuyerName = "Django Reinhardt", GuitarId = fender1.Id ,BuyerCity="Chicago"  };
+            Purchase purchase2 = new Purchase() { Id = 2, BuyerName = "Slash", GuitarId = gibson1.Id , BuyerCity = "Chicago"  };
+            Purchase purchase3 = new Purchase() { Id = 3, BuyerName = "Stevie Ray Vaughn", GuitarId = fender2.Id, BuyerCity = "Austin" };
+            Purchase purchase4 = new Purchase() { Id = 4, BuyerName = "TK", GuitarId = ibanez1.Id ,BuyerCity="Budapest"};
 
             modelBuilder.Entity<Guitar>(entity =>
             {
@@ -64,7 +64,7 @@ namespace SXPDLK_HFT_2021221.Data
                 
             modelBuilder.Entity<Brand>().HasData(fender, ibanez, gibson);
             modelBuilder.Entity<Guitar>().HasData(fender1,fender2 ,ibanez1, gibson1);
-            modelBuilder.Entity<Purchase>().HasData(purchase1, purchase2);
+            modelBuilder.Entity<Purchase>().HasData(purchase1, purchase2,purchase3,purchase4);
         }
     }
 }
