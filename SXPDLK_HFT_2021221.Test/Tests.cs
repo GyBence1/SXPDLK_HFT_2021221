@@ -204,7 +204,7 @@ namespace SXPDLK_HFT_2021221.Test
         }
         [TestCase("Buyer", false)]
         [TestCase(null, true)]
-        public void CreatePurchaseThrowsException(string name, bool shouldthrow)
+        public void CreatePurchaseThrowsException(string name,bool shouldthrow)
         {
             Purchase c = new Purchase()
             {

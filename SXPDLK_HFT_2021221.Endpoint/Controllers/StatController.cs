@@ -25,7 +25,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string,string>> BuyerNamesByBrands()
+        public IEnumerable<KeyValuePair<string,string>> BuyerNamesByModels()
         {
             return pl.BuyerNamesByGuitarModels();
         }
@@ -46,9 +46,9 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         {
             return gl.AVGPriceByTypes();
         }
-        public IEnumerable<KeyValuePair<string,List<string>>>GuitarModelsByBrands()
+        public IEnumerable<KeyValuePair<string,double>>AVGModelsByBrands()
         {
-            return gl.GuitarModelsByBrands();
+            return gl.AVGModelsByBrands();
         }
     }
 }
