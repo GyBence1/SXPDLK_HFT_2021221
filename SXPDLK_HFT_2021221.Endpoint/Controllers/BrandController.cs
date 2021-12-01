@@ -41,7 +41,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /brand
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Brand value)
         {
             bl.Update(value);
