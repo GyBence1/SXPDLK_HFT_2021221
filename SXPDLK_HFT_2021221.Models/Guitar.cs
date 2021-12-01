@@ -33,7 +33,6 @@ namespace SXPDLK_HFT_2021221.Models
         public double Price { get; set; }
         [NotMapped]
         public virtual Brand Brand { get; set; }
-        [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
         [NotMapped]
         [JsonIgnore]

@@ -51,14 +51,14 @@ namespace SXPDLK_HFT_2021221.Data
                 entity.HasOne(guitar => guitar.Brand)
                     .WithMany(brand => brand.Guitars)
                     .HasForeignKey(guitar => guitar.BrandId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
             modelBuilder.Entity<Purchase>(entity =>
             {
                 entity.HasOne(guitar => guitar.Guitar)
                      .WithMany(purchase => purchase.Purchases)
                      .HasForeignKey(guitar => guitar.GuitarId)
-                     .OnDelete(DeleteBehavior.ClientSetNull);
+                     .OnDelete(DeleteBehavior.Cascade);
             });
             
                 
