@@ -20,8 +20,10 @@ namespace SXPDLK_HFT_2021221.Models
         public string BuyerName { get; set; }
         public string BuyerCity { get; set; }
         public string BrandName { get; set; }
+        public int Rating { get; set; }
         [NotMapped]
         public virtual Guitar Guitar { get; set; }
+        [ForeignKey(nameof(Guitar))]
         public int GuitarId { get; set; }
         
 

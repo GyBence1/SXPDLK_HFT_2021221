@@ -54,43 +54,14 @@ namespace SXPDLK_HFT_2021221.Logic
         {
             purchaseRepo.Update(purchase);
         }
-        public IEnumerable<KeyValuePair<string, string>> BuyerNamesByGuitarModels()
+        public IEnumerable<KeyValuePair<string, double>> AVGRatingByCities()
         {
-
-            var asd = from p in purchaseRepo.ReadAll()
-                      join g in guitarRepo.ReadAll() on p.GuitarId equals g.Id
-                      group p by g.Model into grp
-                      select new
-                      {
-                          Model=grp.Key,
-                          Buyer=grp.Select(m=>m.BuyerName)
-                      };
-            var result = asd
-                .Select(x => new KeyValuePair<string, string>(
-                    x.Model,
-                    x.Buyer.FirstOrDefault()
-                    ));
-
-
-
-            return result;
-        }
-        public IEnumerable<KeyValuePair<string, double>> AVGPriceByCities()
-        {
-            //var query = (from p in purchaseRepo.ReadAll()
-            //             join g in guitarRepo.ReadAll() on p.GuitarId equals g.Id
-            //             select new
-            //             {
-            //                 p.BuyerCity,
-            //                 g.Price
-            //             }
-            //           ).ToList();
             return from x in purchaseRepo.ReadAll()
-                   join g in guitarRepo.ReadAll() on x.GuitarId equals g.Id
-                   group x by x.BuyerCity into grp
+                   group x by x.BuyerCity into g
                    select new KeyValuePair<string, double>
-                   (grp.Key, grp.Average(t=>t.Guitar.Price));
+                   (g.Key, g.Average(t => t.Rating));
         }
+        
     }
 }
         

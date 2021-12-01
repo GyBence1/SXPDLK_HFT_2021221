@@ -14,7 +14,6 @@ namespace SXPDLK_HFT_2021221.Logic
         Purchase Read(int id);
         IEnumerable<Purchase> ReadAll();
         void Update(Purchase brand);
-        IEnumerable<KeyValuePair<string, string>> BuyerNamesByGuitarModels();
-        IEnumerable<KeyValuePair<string, double>> AVGPriceByCities();
+        IEnumerable<KeyValuePair<string, double>> AVGRatingByCities();
     }
 }

@@ -78,31 +78,25 @@ namespace SXPDLK_HFT_2021221.Logic
                    select new KeyValuePair<string, double>
                    (g.Key, g.Average(t => t.Price));
         }
-        public IEnumerable<KeyValuePair<string, double>> AVGModelsByBrands()
+        public IEnumerable<KeyValuePair<string, double>> AVGReliabilityByBrands()
         {
-            //var query = from g in guitarRepo.ReadAll()
-            //            join b in brandRepo.ReadAll() on g.BrandId equals b.Id
-            //            group g by b.Name into grp
-            //            select new
-            //            {
-            //                Brand = grp.Key,
-            //                Models = grp.Select(m => m.Model)
-            //            };
-            //var result = query
-            //    .Select(x => new KeyValuePair<string, List<string>>(
-            //        x.Brand,
-            //        x.Models.ToList()
-            //        ));
-            //return result;
-            return from g in guitarRepo.ReadAll()
-                   group g by g.Brand.Name into grp
+            return from x in guitarRepo.ReadAll()
+                   group x by x.Brand.Name into g
                    select new KeyValuePair<string, double>
-                   (grp.Key, grp.Average(t => t.Model.Count()));
+                   (g.Key, g.Average(t => t.Reliability));
         }
+
         public IEnumerable<KeyValuePair<string, double>> AVGPriceByTypes()
         {
             return from x in guitarRepo.ReadAll()
                    group x by x.Type into g
+                   select new KeyValuePair<string, double>
+                   (g.Key.ToString(), g.Average(t => t.Price));
+        }
+        public IEnumerable<KeyValuePair<string, double>> AVGPriceByRanking()
+        {
+            return from x in guitarRepo.ReadAll()
+                   group x by x.Ranking into g
                    select new KeyValuePair<string, double>
                    (g.Key.ToString(), g.Average(t => t.Price));
         }

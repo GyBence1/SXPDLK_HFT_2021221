@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SXPDLK_HFT_2021221.Models
 {
@@ -16,6 +17,7 @@ namespace SXPDLK_HFT_2021221.Models
         [Required]
         public string Name { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Guitar> Guitars { get; set; }
         public Brand()
         {

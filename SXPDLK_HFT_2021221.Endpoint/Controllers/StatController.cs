@@ -25,14 +25,14 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string,string>> BuyerNamesByModels()
+        public IEnumerable<KeyValuePair<string, double>> AVGRatingByCities()
         {
-            return pl.BuyerNamesByGuitarModels();
+            return pl.AVGRatingByCities();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string,double>>AVGPriceByCities()
+        public IEnumerable<KeyValuePair<string,double>>AVGPriceByRanking()
         {
-            return pl.AVGPriceByCities();
+            return gl.AVGPriceByRanking();
         }
         [HttpGet]
         public double AVGPrice()
@@ -50,9 +50,9 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
             return gl.AVGPriceByTypes();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string,double>>AVGModelsByBrands()
+        public IEnumerable<KeyValuePair<string, double>> AVGReliabilityByBrands()
         {
-            return gl.AVGModelsByBrands();
+            return gl.AVGReliabilityByBrands();
         }
     }
 }

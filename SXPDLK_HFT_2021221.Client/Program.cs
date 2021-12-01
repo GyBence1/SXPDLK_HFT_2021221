@@ -20,12 +20,18 @@ namespace SXPDLK_HFT_2021221.Client
             }
             double avgpr = rest.GetSingle<double>("stat/avgprice");
             Console.WriteLine("Átlagár: {0}", avgpr);
+            ;
+            var buyer = rest.Get<KeyValuePair<string, string>>("stat/buyernamesbymodels");
+            foreach (var item in buyer)
+            {
+                Console.WriteLine(item);
+            }
             var avgpricebycities = rest.Get<KeyValuePair<string, double>>("stat/avgpricebycities");
             foreach (var item in avgpricebycities)
             {
-                Console.WriteLine(item.Key +"\t" +item.Value);
+                Console.WriteLine(item.Key + "\t" + item.Value);
             }
-           
+
         }
     }
 }

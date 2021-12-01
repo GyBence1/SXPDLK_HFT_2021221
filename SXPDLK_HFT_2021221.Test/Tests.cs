@@ -39,7 +39,9 @@ namespace SXPDLK_HFT_2021221.Test
                         Brand=fakeBrand,
                         BrandId=fakeBrand.Id,
                         Price=10000,
-                        Type=GuitarTypes.Electric
+                        Type=GuitarTypes.Electric,
+                        Ranking=Types.Intermediate,
+                        Reliability=8
                     },
                     new Guitar()
                     {
@@ -48,7 +50,9 @@ namespace SXPDLK_HFT_2021221.Test
                         Brand=fakeBrand,
                         BrandId=fakeBrand.Id,
                         Price=20000,
-                        Type=GuitarTypes.Acoustic
+                        Type=GuitarTypes.Acoustic,
+                        Ranking=Types.Amateur,
+                        Reliability=6
                     },
                     new Guitar()
                     {
@@ -57,7 +61,9 @@ namespace SXPDLK_HFT_2021221.Test
                         Brand=fakeBrand,
                         BrandId=fakeBrand.Id,
                         Price=15000,
-                        Type=GuitarTypes.Electric
+                        Type=GuitarTypes.Electric,
+                        Ranking=Types.Pro,
+                        Reliability=4
                     }
             };
             mockGuitarRepository.Setup(r => r.ReadAll()).Returns(guitars.AsQueryable()
@@ -77,7 +83,8 @@ namespace SXPDLK_HFT_2021221.Test
                         Guitar=guitars[0],
                         GuitarId=guitars[0].Id,
                         Id=1
-                        ,BrandName=guitars[0].Brand.Name
+                        ,BrandName=guitars[0].Brand.Name,
+                        Rating=8
 
                     },
                     new Purchase()
@@ -88,6 +95,7 @@ namespace SXPDLK_HFT_2021221.Test
                         GuitarId=guitars[1].Id,
                         Id=2,
                         BrandName=guitars[1].Brand.Name
+                        ,Rating=4
                     },
                     new Purchase()
                     {
@@ -96,7 +104,8 @@ namespace SXPDLK_HFT_2021221.Test
                         Guitar=guitars[2],
                         GuitarId=guitars[2].Id,
                         Id=3,
-                        BrandName=guitars[2].Brand.Name
+                        BrandName=guitars[2].Brand.Name,
+                        Rating=10
                     }
             };
             mockPurchaseRepository.Setup(r => r.ReadAll()).Returns(purchases.AsQueryable());
@@ -120,6 +129,18 @@ namespace SXPDLK_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
+        public void AVGPriceByRankingTest()
+        {
+            var result = gl.AVGPriceByRanking();
+            var expected = new List<KeyValuePair<string, double>>()
+            {
+                new KeyValuePair<string, double>("Intermediate",10000),
+                new KeyValuePair<string, double>("Amateur",20000),
+                new KeyValuePair<string, double>("Pro",15000)
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
+        [Test]
         public void AVGPriceByTypesTest()
         {
             var result = gl.AVGPriceByTypes();
@@ -131,35 +152,23 @@ namespace SXPDLK_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(expect));
         }
         [Test]
-        public void BuyerNamesByModelsTest()
+        public void AVGRatingbyCitiesTest()
         {
-            var result = pl.BuyerNamesByGuitarModels();
-            var expected = new List<KeyValuePair<string, string>>()
+            var result = pl.AVGRatingByCities();
+            var expected = new List<KeyValuePair<string, double>>()
             {
-                new KeyValuePair<string, string>("LP3","Buyer1"),
-                new KeyValuePair<string, string>("BC9","Buyer2"),
-                new KeyValuePair<string, string>("GH1","Buyer3")
+                new KeyValuePair<string, double>("Budapest",6),
+                new KeyValuePair<string, double>("Chicago",10)
             };
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void AVGPricebyCitiesTest()
+        public void AVGReliabilityByBrandsTest()
         {
-            var result = pl.AVGPriceByCities();
+            var result = gl.AVGReliabilityByBrands();
             var expected = new List<KeyValuePair<string, double>>()
             {
-                new KeyValuePair<string, double>("Budapest",15000),
-                new KeyValuePair<string, double>("Chicago",15000)
-            };
-            Assert.That(result, Is.EqualTo(expected));
-        }
-        [Test]
-        public void AVGModelsByBrandsTest()
-        {
-            var result = gl.AVGModelsByBrands();
-            var expected = new List<KeyValuePair<string, double>>()
-            {
-                new KeyValuePair<string, double>("Epiphone",3)
+                new KeyValuePair<string, double>("Epiphone",6)
             };
             Assert.That(result, Is.EqualTo(expected));
         }
