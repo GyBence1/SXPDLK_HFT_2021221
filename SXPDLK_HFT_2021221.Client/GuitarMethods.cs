@@ -30,9 +30,15 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void GuitarCreate(RestService rest)
         {
+            var x = new Brand()
+            {
+                Name = "NewBrand"
+            };
             var tmp = new Guitar()
             {
-                Model = "NewGuitar"
+                Model = "NewGuitar",
+                Brand = x,
+                BrandId = x.Id
             };
             rest.Post<Guitar>(tmp, "guitar");
             Console.WriteLine($"New guitar created: \t Id:{tmp.Id}\t Model: {tmp.Model}");

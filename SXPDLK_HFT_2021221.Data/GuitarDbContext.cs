@@ -33,7 +33,7 @@ namespace SXPDLK_HFT_2021221.Data
         {
             Brand fender = new Brand() { Id = 1, Name = "Fender" };
             Brand gibson = new Brand() { Id = 2, Name = "Gibson" };
-            Brand ibanez = new Brand() { Id = 3, Name = "Ibanez" };
+            Brand ibanez = new Brand() { Id = 3,Name = "Ibanez" };
 
             Guitar fender1 = new Guitar() { Id = 1, BrandId = fender.Id, Price = 50000, Model = "Fender Bullet Stratocaster" ,Type=GuitarTypes.Electric,Ranking=Types.Amateur, Reliability = 7 };
             Guitar fender2 = new Guitar() { Id = 2, BrandId = fender.Id, Price = 70000, Model = "Fender Mustang Stratocaster" , Type = GuitarTypes.Electric, Ranking = Types.Amateur, Reliability = 5};

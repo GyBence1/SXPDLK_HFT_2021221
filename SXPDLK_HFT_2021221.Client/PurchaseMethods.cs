@@ -26,9 +26,22 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void PurchaseCreate(RestService rest)
         {
+            var y = new Brand()
+            {
+                Name = "PurchaseBrand"
+            };
+            var x = new Guitar()
+            {
+                Model = "NewModel",
+                Brand = y,
+                BrandId = y.Id
+            };
             var tmp = new Purchase()
             {
-                BuyerName = "NewBuyer"
+                BuyerName = "NewBuyer",
+                Guitar = x,
+                GuitarId=x.Id
+                
             };
             rest.Post<Purchase>(tmp, "purchase");
             Console.WriteLine($"New purchase created: \t Id:{tmp.Id}\t Name: {tmp.BuyerName}");

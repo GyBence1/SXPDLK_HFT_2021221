@@ -43,7 +43,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT api/<GuitarController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Guitar value)
         {
             gl.Update(value);

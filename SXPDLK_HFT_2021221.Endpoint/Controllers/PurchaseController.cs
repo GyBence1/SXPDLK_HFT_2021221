@@ -44,7 +44,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT api/<PurchaseController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Purchase value)
         {
             pl.Update(value);
