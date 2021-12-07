@@ -35,7 +35,7 @@ namespace SXPDLK_HFT_2021221.Test
                 new Guitar()
                     {
                         Id=1,
-                        Model="LP3",
+                        Model="CD1",
                         Brand=fakeBrand,
                         BrandId=fakeBrand.Id,
                         Price=10000,
