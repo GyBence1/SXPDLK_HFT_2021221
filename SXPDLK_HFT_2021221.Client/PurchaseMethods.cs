@@ -50,7 +50,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void PurchaseRead(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a purchase (existing)");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Purchase>(id, "purchase");
             Console.WriteLine($"Name: {result.BuyerName} \t Id: {result.Id}");
@@ -69,7 +69,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void PurchaseUpdate(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a purchase");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Purchase>(id, "purchase");
             Console.WriteLine("Enter new Name");
@@ -82,7 +82,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void PurchaseDelete(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a purchase");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "purchase");
             Console.WriteLine("Purchase deleted successfully");
