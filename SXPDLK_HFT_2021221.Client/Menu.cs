@@ -34,14 +34,14 @@ namespace SXPDLK_HFT_2021221.Client
             while (input!="Q")
             {
                 MenuPrint();
-                Console.WriteLine("Choose an option:");
+                Console.WriteLine("Choose an option from above");
                 input = Console.ReadLine();
                 switch (input)
                 {
                     case "1":
                         Console.Clear();
                         bm.BrandPrint();
-                        Console.WriteLine("Choose an option");
+                        Console.WriteLine("Choose an option from above");
                         innerinput = Console.ReadLine();
                         switch (innerinput)
                         {
@@ -75,7 +75,7 @@ namespace SXPDLK_HFT_2021221.Client
                     case "2":
                         Console.Clear();
                         gm.GuitarPrint();
-                        Console.WriteLine("Choose an option from below");
+                        Console.WriteLine("Choose an option from above");
                         innerinput = Console.ReadLine();
                         switch (innerinput)
                         {
@@ -129,7 +129,7 @@ namespace SXPDLK_HFT_2021221.Client
                     case "3":
                         Console.Clear();
                         pm.PurchasePrint();
-                        Console.WriteLine("Choose an option");
+                        Console.WriteLine("Choose an option from above");
                         innerinput = Console.ReadLine();
                         switch (innerinput)
                         {
