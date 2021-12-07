@@ -51,7 +51,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void BrandUpdate(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of the brand");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Brand>(id, "brand");
             Console.WriteLine("Enter new name");
@@ -64,7 +64,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void BrandDelete(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of the brand");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "brand");
             Console.WriteLine("Brand deleted successfully");
