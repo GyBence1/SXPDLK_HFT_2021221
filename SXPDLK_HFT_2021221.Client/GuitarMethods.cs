@@ -47,7 +47,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void GuitarRead(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a guitar (existing)");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Guitar>(id, "guitar");
             Console.WriteLine($"Model: {result.Model} \t Id: {result.Id}");
