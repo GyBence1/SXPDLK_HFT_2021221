@@ -131,7 +131,7 @@ namespace SXPDLK_HFT_2021221.Client
                 Console.WriteLine($"Brand: {item.Key} \t Average reliability: {item.Value}");
             }
             Console.WriteLine("Press any key to continue........");
-            Console.ReadLine();
+            
         }
     }
 }
