@@ -28,7 +28,7 @@ namespace SXPDLK_HFT_2021221.Client
             rest.Post<Brand>(tmp, "brand");
             Console.WriteLine($"New Brand created: \t Id:{tmp.Id}\t Name: {tmp.Name}");
             Console.WriteLine("Press any key to continue........");
-           
+            Console.ReadLine();
         }
         public void BrandRead(RestService rest)
         {
