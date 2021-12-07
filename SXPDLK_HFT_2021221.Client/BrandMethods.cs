@@ -32,7 +32,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void BrandRead(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of the brand (existing)");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Brand>(id, "brand");
             Console.WriteLine($"Name: {result.Name} \t Id: {result.Id}");
