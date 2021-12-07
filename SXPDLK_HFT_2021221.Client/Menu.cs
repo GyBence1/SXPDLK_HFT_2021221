@@ -22,7 +22,7 @@ namespace SXPDLK_HFT_2021221.Client
 
         public void MenuPrint()
         {
-            Console.WriteLine("Welcome");
+            Console.WriteLine("Welcome to the Guitar shop!");
             Console.WriteLine("1 - Brand methods");
             Console.WriteLine("2 - Guitar methods");
             Console.WriteLine("3 - Purchase methods");
