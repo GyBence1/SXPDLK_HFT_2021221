@@ -75,7 +75,7 @@ namespace SXPDLK_HFT_2021221.Client
                     case "2":
                         Console.Clear();
                         gm.GuitarPrint();
-                        Console.WriteLine("Choose an option");
+                        Console.WriteLine("Choose an option from below");
                         innerinput = Console.ReadLine();
                         switch (innerinput)
                         {
