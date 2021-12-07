@@ -66,7 +66,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void GuitarUpdate(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a guitar");
             int id = int.Parse(Console.ReadLine());
             var result = rest.Get<Guitar>(id, "guitar");
             Console.WriteLine("Enter new model");
@@ -79,7 +79,7 @@ namespace SXPDLK_HFT_2021221.Client
         }
         public void GuitarDelete(RestService rest)
         {
-            Console.WriteLine("Enter the id");
+            Console.WriteLine("Enter the id of a guitar");
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, "guitar");
             Console.WriteLine("Guitar deleted successfully");
