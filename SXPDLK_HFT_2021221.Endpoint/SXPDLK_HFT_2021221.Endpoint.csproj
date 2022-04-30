@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,5 +15,5 @@
     <ProjectReference Include="..\SXPDLK_HFT_2021221.Models\SXPDLK_HFT_2021221.Models.csproj" />
     <ProjectReference Include="..\SXPDLK_HFT_2021221.Repository\SXPDLK_HFT_2021221.Repository.csproj" />
   </ItemGroup>
-
+  
 </Project>

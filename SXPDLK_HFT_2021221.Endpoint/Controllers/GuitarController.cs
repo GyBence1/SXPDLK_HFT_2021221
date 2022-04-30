@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SXPDLK_HFT_2021221.Endpoint.Services;
 using SXPDLK_HFT_2021221.Logic;
 using SXPDLK_HFT_2021221.Models;
 using System;
@@ -15,9 +17,10 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
     public class GuitarController : ControllerBase
     {
         IGuitarLogic gl;
-
-        public GuitarController(IGuitarLogic gl)
+        IHubContext<SignalRHub> hub;
+        public GuitarController(IGuitarLogic gl, IHubContext<SignalRHub> hub)
         {
+            this.hub=hub;
             this.gl = gl;
         }
 
@@ -40,6 +43,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Guitar value)
         {
             gl.Create(value);
+            hub.Clients.All.SendAsync("GuitarCreated", value);
         }
 
         // PUT api/<GuitarController>/5
@@ -47,13 +51,16 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Guitar value)
         {
             gl.Update(value);
+            hub.Clients.All.SendAsync("GuitarUpdated", value);
         }
 
         // DELETE api/<GuitarController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var asd=this.gl.Read(id);
             gl.Delete(id);
+            hub.Clients.All.SendAsync("GuitarDeleted", asd);
         }
     }
 }

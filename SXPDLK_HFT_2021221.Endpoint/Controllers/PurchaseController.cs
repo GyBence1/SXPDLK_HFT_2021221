@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SXPDLK_HFT_2021221.Endpoint.Services;
 using SXPDLK_HFT_2021221.Logic;
 using SXPDLK_HFT_2021221.Models;
 using System;
@@ -15,8 +17,8 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
     public class PurchaseController : ControllerBase
     {
         IPurchaseLogic pl;
-
-        public PurchaseController(IPurchaseLogic pl)
+        IHubContext<SignalRHub> hub;
+        public PurchaseController(IPurchaseLogic pl, IHubContext<SignalRHub> hub)
         {
             this.pl = pl;
         }
@@ -41,6 +43,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Purchase value)
         {
             pl.Create(value);
+            hub.Clients.All.SendAsync("PurchaseCreated", value);
         }
 
         // PUT api/<PurchaseController>/5
@@ -48,13 +51,16 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Purchase value)
         {
             pl.Update(value);
+            hub.Clients.All.SendAsync("PurchaseUpdated", value);
         }
 
         // DELETE api/<PurchaseController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var asd=this.pl.Read(id);
             pl.Delete(id);
+            hub.Clients.All.SendAsync("PurchaseDeleted", asd);
         }
     }
 }

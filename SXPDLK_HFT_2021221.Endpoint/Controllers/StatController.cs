@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SXPDLK_HFT_2021221.Endpoint.Services;
 using SXPDLK_HFT_2021221.Logic;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,6 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         IGuitarLogic gl;
         IBrandLogic bl;
         IPurchaseLogic pl;
-
         public StatController(IGuitarLogic gl, IBrandLogic bl, IPurchaseLogic pl)
         {
             this.gl = gl;

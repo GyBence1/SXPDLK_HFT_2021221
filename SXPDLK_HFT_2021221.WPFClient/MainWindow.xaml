@@ -1,0 +1,79 @@
+﻿<Window x:Class="SXPDLK_HFT_2021221.WPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SXPDLK_HFT_2021221.WPFClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBrand}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Column="1">
+                <Label Content="Name" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedBrand.Name}" Padding="10"/>
+                <Button Content="Create Brand" Command="{Binding CreateBrandCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Brand" Command="{Binding DeleteBrandCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Brand" Command="{Binding UpdateBrandCommand}" Margin="10" Padding="10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Guitars}" SelectedItem="{Binding SelectedGuitar}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Model}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Column="1">
+                <Label Content="Model (select a Brand from list above)" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedGuitar.Model}" Padding="10"/>
+                <Button Content="Create Guitar" Command="{Binding CreateGuitarCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Guitar" Command="{Binding DeleteGuitarCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Guitar" Command="{Binding UpdateGuitarCommand}" Margin="10" Padding="10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Purchases}" SelectedItem="{Binding SelectedPurchase}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding BuyerName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Column="1">
+                <Label Content="Buyer's name (Also select a guitar from the list above)" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedPurchase.BuyerName}" Padding="10"/>
+                <Button Content="Create Purchase" Command="{Binding CreatePurchaseCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Purchase" Command="{Binding DeletePurchaseCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Purchase" Command="{Binding UpdatePurchaseCommand}" Margin="10" Padding="10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

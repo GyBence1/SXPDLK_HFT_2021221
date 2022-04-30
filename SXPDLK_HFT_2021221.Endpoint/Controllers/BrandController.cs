@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SXPDLK_HFT_2021221.Endpoint.Services;
 using SXPDLK_HFT_2021221.Logic;
 using SXPDLK_HFT_2021221.Models;
 using System;
@@ -15,8 +17,10 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
     public class BrandController : ControllerBase
     {
         IBrandLogic bl;
-        public BrandController(IBrandLogic bl)
+        IHubContext<SignalRHub> hub;
+        public BrandController(IBrandLogic bl, IHubContext<SignalRHub> hub)
         {
+            this.hub= hub;
             this.bl = bl;
         }
         // GET: /brand
@@ -38,6 +42,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Brand value)
         {
             bl.Create(value);
+            hub.Clients.All.SendAsync("BrandCreated", value);
         }
 
         // PUT /brand
@@ -45,13 +50,16 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Brand value)
         {
             bl.Update(value);
+            hub.Clients.All.SendAsync("BrandUpdated", value);
         }
 
         // DELETE /brand/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var did=this.bl.Read(id);
             bl.Delete(id);
+            hub.Clients.All.SendAsync("BrandDeleted", did);
         }
     }
 }

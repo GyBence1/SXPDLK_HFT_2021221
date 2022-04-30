@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SXPDLK_HFT_2021221.Data;
+using SXPDLK_HFT_2021221.Endpoint.Services;
 using SXPDLK_HFT_2021221.Logic;
 using SXPDLK_HFT_2021221.Repository;
 using System;
@@ -27,6 +28,8 @@ namespace SXPDLK_HFT_2021221.Endpoint
             services.AddTransient<IBrandRepository,BrandRepository>();
             services.AddTransient<IPurchaseRepository,PurchaseRepository>();
             services.AddTransient<GuitarDbContext,GuitarDbContext>();
+            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +46,12 @@ namespace SXPDLK_HFT_2021221.Endpoint
             {
                 endpoints.MapControllers();
             });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
+            });
+
         }
     }
 }
