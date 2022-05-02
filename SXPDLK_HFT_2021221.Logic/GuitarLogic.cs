@@ -40,14 +40,9 @@ namespace SXPDLK_HFT_2021221.Logic
         public void Delete(int id)
         {
             Guitar[] guitars = guitarRepo.ReadAll().ToArray();
-            if (id>guitars.Length)
-            {
-                throw new IndexOutOfRangeException("Invalid index");
-            }
-            else
-            {
+            
                 guitarRepo.Delete(id);
-            }
+          
         }
 
         public void Update(Guitar guitar)

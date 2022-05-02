@@ -21,6 +21,7 @@ namespace SXPDLK_HFT_2021221.Endpoint.Controllers
         public PurchaseController(IPurchaseLogic pl, IHubContext<SignalRHub> hub)
         {
             this.pl = pl;
+            this.hub = hub;
         }
 
 

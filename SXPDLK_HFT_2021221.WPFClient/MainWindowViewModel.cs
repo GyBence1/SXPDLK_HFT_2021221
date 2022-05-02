@@ -137,9 +137,11 @@ namespace SXPDLK_HFT_2021221.WPFClient
                 Guitars.Delete(SelectedGuitar.Id),
                 () => selectedGuitar!=null
                 );
-                UpdateGuitarCommand=new RelayCommand(() =>
-                Guitars.Update(SelectedGuitar),
-                () => SelectedGuitar!=null);
+                UpdateGuitarCommand=new RelayCommand(() => {
+                    SelectedGuitar.BrandId=SelectedBrand.Id;
+                    Guitars.Update(SelectedGuitar);
+                },
+                () => SelectedGuitar!=null) ;
 
                 CreatePurchaseCommand=new RelayCommand(() =>
                Purchases.Add(new Purchase()

@@ -52,7 +52,7 @@
                 <TextBox Text="{Binding SelectedGuitar.Model}" Padding="10"/>
                 <Button Content="Create Guitar" Command="{Binding CreateGuitarCommand}" Margin="10" Padding="10"/>
                 <Button Content="Delete Guitar" Command="{Binding DeleteGuitarCommand}" Margin="10" Padding="10"/>
-                <Button Content="Update Guitar" Command="{Binding UpdateGuitarCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Guitar (Select a Brand from the list above)" Command="{Binding UpdateGuitarCommand}" Margin="10" Padding="10"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
